@@ -1,0 +1,5 @@
+anthropic
+# Only needed for real Gmail mode:
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib

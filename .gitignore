@@ -1,0 +1,12 @@
+# Secrets: never commit these
+credentials.json
+token.json
+.env
+
+# Your personal data
+tracker.db
+tracker_practice.db
+drafts/
+
+__pycache__/
+.venv/

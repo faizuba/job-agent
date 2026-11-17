@@ -1,0 +1,74 @@
+[
+  {
+    "id": "e01", "days_ago": 24,
+    "from": "Skyline Airways Careers <noreply@skylineairways-careers.example>",
+    "subject": "Thank you for applying: Sales Strategy & Pricing Intern",
+    "body": "Hi Faizaan,\n\nThank you for your application for the Sales Strategy & Pricing Intern (Summer 2027) position at Skyline Airways. Our team is reviewing applications and will reach out if your qualifications match our needs.\n\nThis mailbox is not monitored.\n\nSkyline Airways Talent Acquisition"
+  },
+  {
+    "id": "e02", "days_ago": 20,
+    "from": "Priya Shah <priya.shah@northbridge.example>",
+    "subject": "Application received - Data Analyst Intern",
+    "body": "Hi Faizaan,\n\nThanks for applying to the Data Analyst Intern role at Northbridge Consulting, and it was great meeting you at the career fair. I've passed your resume to the hiring team and will follow up once we have an update on next steps.\n\nBest,\nPriya Shah\nCampus Recruiter, Northbridge Consulting"
+  },
+  {
+    "id": "e03", "days_ago": 18,
+    "from": "Harbor Capital Recruiting <noreply@harborcapital.example>",
+    "subject": "Your application to Harbor Capital - Business Analyst Intern",
+    "body": "Dear Faizaan,\n\nWe have received your application for Business Analyst Intern. You can check your status at any time in the candidate portal.\n\nHarbor Capital Recruiting"
+  },
+  {
+    "id": "e04", "days_ago": 9,
+    "from": "Harbor Capital Recruiting <noreply@harborcapital.example>",
+    "subject": "Next step: complete your online assessment",
+    "body": "Dear Faizaan,\n\nCongratulations! You have been selected to complete an online assessment for the Business Analyst Intern position. The assessment takes about 45 minutes and must be completed within 5 days of this email.\n\nHarbor Capital Recruiting"
+  },
+  {
+    "id": "e05", "days_ago": 5,
+    "from": "Maya Lopez <maya.lopez@harborcapital.example>",
+    "subject": "Interview invitation - Business Analyst Intern",
+    "body": "Hi Faizaan,\n\nThanks for completing the assessment. We'd like to invite you to a 30-minute virtual interview for the Business Analyst Intern role. Please reply with three times that work for you next Tuesday through Thursday.\n\nBest,\nMaya Lopez\nUniversity Recruiting, Harbor Capital"
+  },
+  {
+    "id": "e06", "days_ago": 4,
+    "from": "Harbor Capital Recruiting <noreply@harborcapital.example>",
+    "subject": "We received your application",
+    "body": "Dear Faizaan,\n\nThis is an automated confirmation that we have received your application for Business Analyst Intern.\n\nHarbor Capital Recruiting"
+  },
+  {
+    "id": "e07", "days_ago": 12,
+    "from": "Atlas Retail Careers <careers@atlasretail.example>",
+    "subject": "Update on your application - Pricing Analyst Intern",
+    "body": "Dear Faizaan,\n\nThank you for your interest in the Pricing Analyst Intern position. Unfortunately, we have decided to move forward with other candidates whose experience more closely matches our current needs. We encourage you to apply for future openings.\n\nAtlas Retail Talent Team"
+  },
+  {
+    "id": "e08", "days_ago": 3,
+    "from": "JobBoard Alerts <jobs-noreply@jobboard.example>",
+    "subject": "15 new jobs matching your application preferences",
+    "body": "New internships for you: Data Analyst Intern at Lakeview Bank, Marketing Analytics Intern at Cobalt Foods, and 13 more. Plus: 5 interview tips recruiters wish you knew. Apply now!"
+  },
+  {
+    "id": "e09", "days_ago": 2,
+    "from": "Mom <mom.family@mail.example>",
+    "subject": "Dinner Sunday?",
+    "body": "Hi beta, are you coming home for dinner Sunday? Also how did the interview go? Call me when you can."
+  },
+  {
+    "id": "e10", "days_ago": 16,
+    "from": "Prairie Air <noreply@prairieair.example>",
+    "subject": "Application confirmation - Revenue Management Intern",
+    "body": "Hello Faizaan,\n\nYour application for Revenue Management Intern has been submitted successfully. Please do not reply to this email.\n\nPrairie Air Careers"
+  },
+  {
+    "id": "e11", "days_ago": 1,
+    "from": "University Career Center <careers@university.example>",
+    "subject": "Career fair next week: bring your application materials",
+    "body": "The Spring Career Fair is next Wednesday. Bring printed resumes and practice your elevator pitch. Interview rooms are available to book through the portal."
+  },
+  {
+    "id": "e12", "days_ago": 7,
+    "from": "Northbridge Talent <talent@northbridge.example>",
+    "subject": "Application received - Strategy Consulting Intern",
+    "body": "Hi Faizaan,\n\nWe've received your application for Strategy Consulting Intern at Northbridge Consulting. We'll be in touch about next steps.\n\nNorthbridge Talent Team"
+  }
+]
