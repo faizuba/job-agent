@@ -12,7 +12,6 @@ It never sends email.
   - `inbox.py`: `FakeInbox` (practice, `sample_data/fake_inbox.json`) and `GmailInbox` (real Gmail API)
   - `prompts.py`: system prompt; `main.py`: CLI (`run --fake`, `run`, `show`, `reset`)
   - `tests/test_tools.py`: 8 passing tests (`python -m unittest discover tests`)
-- Not yet run against the real Claude API or real Gmail.
 - The README's "What a correct practice run looks like" table is the expected outcome for the fake inbox.
 
 ## What I want next (in this order)
