@@ -1,11 +1,3 @@
-# Job Application Tracker Agent: context for Claude
-
-## Who I am and why this exists
-I'm a college student learning AI agents. I've built a full-stack sleep-tracking website before, and
-I'm recruiting for analytics / sales strategy internships (e.g. United Airlines Sales Strategy & Pricing).
-This project is (1) a tool I'll actually use during recruiting and (2) a portfolio piece to show I
-understand AI agents. **I'm a beginner with agents: explain things simply and teach as you go.**
-
 ## What the agent does
 Every morning it reads my Gmail, finds emails about my own job applications, updates a SQLite tracker
 (applied → assessment → interview → offer / rejected / withdrawn), skips noise (job alerts, newsletters,
