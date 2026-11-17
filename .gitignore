@@ -10,3 +10,6 @@ drafts/
 
 __pycache__/
 .venv/
+
+# macOS folder junk
+.DS_Store
