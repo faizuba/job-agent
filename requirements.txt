@@ -3,3 +3,5 @@ anthropic
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
+# Only needed for mcp_server.py (ask Claude about your tracker):
+mcp>=2.3,<3
