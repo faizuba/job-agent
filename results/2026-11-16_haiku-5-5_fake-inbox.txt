@@ -1,0 +1,79 @@
+Run log: claude-haiku-5-5 on the practice inbox (sample_data/fake_inbox.json)
+Date: 2026-11-16 · Command: python main.py run --fake (AGENT_MODEL=claude-haiku-5-5 in .env) · Fresh tracker (reset before run)
+Scored against README "What a correct practice run looks like": 6/6 statuses, 3/3 skips, 1/1 drafts
+Cost: 48,974 input × $0.10/M + 4,751 output × $0.50/M ≈ $0.007
+-------------------------------------------------------------------------------
+
+Running agent (practice inbox)...
+
+  step 1: search_emails(query='application OR interview OR assessment OR offer OR unfortunately OR "thank you f...)
+  step 1: search_emails(query='job OR internship OR career OR recruiter OR hiring OR candidate', newer_than_day...)
+  step 2: read_email(email_id='e05')
+  step 2: read_email(email_id='e04')
+  step 3: find_application(company='Harbor Capital')
+  step 3: find_application(company='Northbridge')
+  step 3: find_application(company='Skyline Airways')
+  step 3: find_application(company='Atlas Retail')
+  step 3: find_application(company='Prairie Air')
+  step 4: update_application(company='Skyline Airways', role='Sales Strategy & Pricing Intern', status='applied', ev...)
+  step 4: update_application(company='Northbridge Consulting', role='Data Analyst Intern', status='applied', event_d...)
+  step 4: update_application(company='Northbridge Consulting', role='Strategy Consulting Intern', status='applied', ...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='assessment', event_da...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='interview', event_dat...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 4: update_application(company='Atlas Retail', role='Pricing Analyst Intern', status='rejected', event_date='2...)
+  step 4: update_application(company='Prairie Air', role='Revenue Management Intern', status='applied', event_date='...)
+  step 4: skip_email(email_id='e08', reason='JobBoard job alert')
+  step 4: skip_email(email_id='e09', reason='Personal mail from family')
+  step 4: skip_email(email_id='e11', reason='University career center announcement, not a specific application')
+  step 5: list_stale_applications(days=14)
+  step 6: create_draft(to='priya.shah@northbridge.example', subject='Following up: Data Analyst Intern applica...)
+
+[done in 7 steps | 48,974 input + 4,751 output tokens]
+
+=== Actions taken ===
+- Skyline Airways / Sales Strategy & Pricing Intern: created
+- Northbridge Consulting / Data Analyst Intern: created
+- Northbridge Consulting / Strategy Consulting Intern: created
+- Harbor Capital / Business Analyst Intern: created
+- Harbor Capital / Business Analyst Intern: updated 'applied' -> 'assessment'
+- Harbor Capital / Business Analyst Intern: updated 'assessment' -> 'interview'
+- Harbor Capital / Business Analyst Intern: kept status 'interview' (won't move from 'interview' to 'applied')
+- Atlas Retail / Pricing Analyst Intern: created
+- Prairie Air / Revenue Management Intern: created
+- Drafted follow-up: 'Following up: Data Analyst Intern application' -> priya.shah@northbridge.example
+
+=== Agent summary ===
+I checked the last 30 days of email and found 9 application-related emails covering 6 applications. I also skipped 3 non-application emails and drafted one follow-up.
+
+**Tracker updates (6 applications)**
+- **Harbor Capital, Business Analyst Intern:** Now at **interview** stage. Applied 10/29, assessment 11/7, and Maya Lopez invited you to a 30-minute virtual interview on 11/11. The tracker kept "interview" when the later duplicate confirmation (11/12) came in.
+- **Atlas Retail, Pricing Analyst Intern:** **Rejected** (11/4).
+- **Northbridge Consulting, Data Analyst Intern:** Applied (10/27). Priya Shah confirmed receipt and mentioned meeting you at the career fair.
+- **Northbridge Consulting, Strategy Consulting Intern:** Applied (11/9). Confirmation from Northbridge Talent.
+- **Skyline Airways, Sales Strategy & Pricing Intern:** Applied (10/23). Automated confirmation.
+- **Prairie Air, Revenue Management Intern:** Applied (10/31). Automated confirmation.
+
+**Drafts**
+- One follow-up to **Priya Shah** (priya.shah@northbridge.example) for the Northbridge Data Analyst Intern role. It is saved as a draft for you to review and send.
+
+**Stale applications with no draft**
+- **Skyline Airways** and **Prairie Air** both came from no-reply addresses, so I didn't draft follow-ups. You'd need to use their careers portals if you want to check status.
+
+**Needs your attention**
+- **Harbor Capital interview:** Reply to Maya Lopez (maya.lopez@harborcapital.example) with three times that work next Tuesday through Thursday. The interview isn't scheduled yet.
+- **Harbor Capital assessment:** The online assessment had to be finished within 5 days of 11/7, so the deadline was around 11/12. The emails don't say whether you completed it. Maya's 11/11 email implies you did, but please confirm.
+- **Northbridge Talent (Strategy Consulting Intern):** Their email said only that they'd be in touch about next steps. No draft was made because that application isn't stale yet.
+
+**Skipped (not about your applications)**
+- JobBoard job-alert digest, a personal email from Mom, and a university career fair announcement.
+
+=== Tracker (6 applications) ===
+Company                 Role                                Status      Applied     Last update
+Harbor Capital          Business Analyst Intern             interview   2026-10-29  2026-11-12
+Northbridge Consulting  Strategy Consulting Intern          applied     2026-11-09  2026-11-09
+Atlas Retail            Pricing Analyst Intern              rejected    2026-11-04  2026-11-04
+Prairie Air             Revenue Management Intern           applied     2026-10-31  2026-10-31
+Northbridge Consulting  Data Analyst Intern                 applied     2026-10-27  2026-10-27
+Skyline Airways         Sales Strategy & Pricing Intern     applied     2026-10-23  2026-10-23
