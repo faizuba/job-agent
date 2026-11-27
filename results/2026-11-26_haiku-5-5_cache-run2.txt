@@ -1,0 +1,77 @@
+Running agent on claude-haiku-5-5 (practice inbox, prompt caching on)...
+
+  step 1: search_emails(query='application OR interview OR assessment OR offer OR unfortunately OR "thank you f...)
+  step 1: search_emails(query='job OR internship OR career OR recruiting OR candidate OR position', newer_than_...)
+  step 2: read_email(email_id='e05')
+  step 2: read_email(email_id='e04')
+  step 2: read_email(email_id='e02')
+  step 3: find_application(company='Skyline Airways')
+  step 3: find_application(company='Northbridge Consulting')
+  step 3: find_application(company='Harbor Capital')
+  step 3: find_application(company='Atlas Retail')
+  step 3: find_application(company='Prairie Air')
+  step 4: update_application(company='Skyline Airways', role='Sales Strategy & Pricing Intern (Summer 2027)', status...)
+  step 4: update_application(company='Northbridge Consulting', role='Data Analyst Intern', status='applied', event_d...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='assessment', event_da...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='interview', event_dat...)
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 4: update_application(company='Atlas Retail', role='Pricing Analyst Intern', status='rejected', event_date='2...)
+  step 4: update_application(company='Prairie Air', role='Revenue Management Intern', status='applied', event_date='...)
+  step 4: update_application(company='Northbridge Consulting', role='Strategy Consulting Intern', status='applied', ...)
+  step 5: skip_email(email_id='e08', reason='JobBoard job alert / marketing')
+  step 5: skip_email(email_id='e09', reason='Personal mail from family')
+  step 5: skip_email(email_id='e11', reason='University career center event announcement, not a specific app...)
+  step 5: list_stale_applications(days=14)
+  step 6: create_draft(to='priya.shah@northbridge.example', subject='Following up: Data Analyst Intern applica...)
+
+[done in 7 steps | 51,791 input + 4,311 output tokens | cache: 43,210 read, 8,565 written | cost ≈ $0.0037 (without caching ≈ $0.0073, saved 50%)]
+
+=== Actions taken ===
+- Skyline Airways / Sales Strategy & Pricing Intern (Summer 2027): created
+- Northbridge Consulting / Data Analyst Intern: created
+- Harbor Capital / Business Analyst Intern: created
+- Harbor Capital / Business Analyst Intern: updated 'applied' -> 'assessment'
+- Harbor Capital / Business Analyst Intern: updated 'assessment' -> 'interview'
+- Harbor Capital / Business Analyst Intern: kept status 'interview' (won't move from 'interview' to 'applied')
+- Atlas Retail / Pricing Analyst Intern: created
+- Prairie Air / Revenue Management Intern: created
+- Northbridge Consulting / Strategy Consulting Intern: created
+- Drafted follow-up: 'Following up: Data Analyst Intern application' -> priya.shah@northbridge.example
+
+=== Agent summary ===
+Here's the summary of this run. I checked the last 30 days of email, found 9 application-related emails, and updated the tracker.
+
+**Tracker changes (6 applications)**
+- **Harbor Capital, Business Analyst Intern:** now at **Interview**. This is the most urgent item. Maya Lopez (maya.lopez@harborcapital.example) invited you to a 30-minute virtual interview and asked for three times that work for you next Tuesday through Thursday. I did not reply. The earlier online assessment (email 11/17) had a 5-day completion window, and Maya's note says it was completed.
+- **Northbridge Consulting, Data Analyst Intern:** Applied (confirmed 11/06 by Priya Shah, a campus recruiter you met at the career fair).
+- **Northbridge Consulting, Strategy Consulting Intern:** Applied (confirmed 11/19 by Northbridge Talent).
+- **Skyline Airways, Sales Strategy & Pricing Intern (Summer 2027):** Applied (confirmed 11/02).
+- **Prairie Air, Revenue Management Intern:** Applied (confirmed 11/10).
+- **Atlas Retail, Pricing Analyst Intern:** **Rejected** (11/14).
+
+Harbor Capital's application also has two automated confirmations (11/08 and 11/22), which I recorded without changing its status.
+
+**Skipped (not your applications):** a JobBoard job-alert digest, a personal email from your mom, and a career-center announcement about the upcoming career fair.
+
+**Follow-up drafts (1)**
+- **Priya Shah (Northbridge, Data Analyst Intern):** a short check-in on next steps, saved in drafts for you to review and send.
+
+**No draft, because the only contact is a no-reply address:**
+- **Skyline Airways** (applied 11/02) and **Prairie Air** (applied 11/10). You may want to check their career portals for status.
+
+**Needs your attention**
+1. Reply to Maya Lopez at Harbor Capital with three interview times for Tuesday through Thursday.
+2. Review and send the Priya Shah draft if you want to follow up.
+3. The career fair is next Wednesday, and interview rooms can be booked through the university portal.
+
+=== Tracker (6 applications) ===
+Company                 Role                                Status      Applied     Last update 
+Harbor Capital          Business Analyst Intern             interview   2026-11-08  2026-11-22  
+Northbridge Consulting  Strategy Consulting Intern          applied     2026-11-19  2026-11-19  
+Atlas Retail            Pricing Analyst Intern              rejected    2026-11-14  2026-11-14  
+Prairie Air             Revenue Management Intern           applied     2026-11-10  2026-11-10  
+Northbridge Consulting  Data Analyst Intern                 applied     2026-11-06  2026-11-06  
+Skyline Airways         Sales Strategy & Pricing Intern (Su applied     2026-11-02  2026-11-02  
+
+Full step-by-step log saved to runs/20261126_220635_claude-haiku-5-5.json

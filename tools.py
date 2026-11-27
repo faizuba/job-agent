@@ -126,6 +126,7 @@ class ToolContext:
         self.max_drafts = max_drafts
         self.drafts_created = 0
         self.log = []   # human-readable record of every action, printed at the end
+        self.log_path = None   # where the full JSON run log was saved (set by agent.py)
 
 
 def run_tool(name: str, args: dict, ctx: ToolContext):

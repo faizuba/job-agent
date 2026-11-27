@@ -2,6 +2,7 @@
 main.py — the command line you actually run.
 
   python main.py run --fake        practice run on the sample inbox (start here)
+  python main.py run --fake --no-cache   same, with prompt caching off (for cost comparisons)
   python main.py run               real run on your Gmail
   python main.py show              print your tracker table (no AI, no cost)
   python main.py reset --fake      delete the practice database to start over
@@ -38,6 +39,7 @@ def cmd_run(args):
     from agent import MODEL, run_agent    # imported here so `show` works without the AI library
     from inbox import FakeInbox, GmailInbox
     from prompts import daily_task
+    from run_log import RunLog
     from tools import ToolContext
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -46,14 +48,20 @@ def cmd_run(args):
     inbox = FakeInbox() if args.fake else GmailInbox()
     conn = tracker_db.connect(PRACTICE_DB if args.fake else tracker_db.DB_PATH)
     ctx = ToolContext(inbox, conn, max_drafts=args.max_drafts)
+    cache = not args.no_cache
+    task = daily_task(args.days)
+    log = RunLog(MODEL, "practice" if args.fake else "gmail", cache, task)
 
-    print(f"Running agent on {MODEL} ({'practice inbox' if args.fake else 'Gmail'})...\n")
-    summary = run_agent(daily_task(args.days), ctx)
+    print(f"Running agent on {MODEL} ({'practice inbox' if args.fake else 'Gmail'}, "
+          f"prompt caching {'on' if cache else 'off'})...\n")
+    summary = run_agent(task, ctx, cache=cache, log=log)
 
     print("\n=== Actions taken ===")
     print("\n".join(f"- {line}" for line in ctx.log) or "- none")
     print("\n=== Agent summary ===\n" + summary)
     print_table(conn)
+    if ctx.log_path:
+        print(f"\nFull step-by-step log saved to {ctx.log_path.relative_to(Path(__file__).parent)}")
 
 
 def cmd_show(args):
@@ -88,6 +96,8 @@ if __name__ == "__main__":
     run.add_argument("--fake", action="store_true", help="use the practice inbox")
     run.add_argument("--days", type=int, default=30, help="how far back to look (default 30)")
     run.add_argument("--max-drafts", type=int, default=3)
+    run.add_argument("--no-cache", action="store_true",
+                     help="turn prompt caching off (to measure what caching saves)")
     run.set_defaults(func=cmd_run)
 
     show = sub.add_parser("show", help="print the tracker")

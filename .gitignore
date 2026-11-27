@@ -7,6 +7,8 @@ token.json
 tracker.db
 tracker_practice.db
 drafts/
+# Full run logs: on Gmail runs these contain pieces of your real emails
+runs/
 
 __pycache__/
 .venv/

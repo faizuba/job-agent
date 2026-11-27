@@ -1,0 +1,77 @@
+Run log: claude-sonnet-5-5 on the practice inbox (sample_data/fake_inbox.json)
+Date: 2026-11-16 · Command: python main.py run --fake · Fresh tracker (reset before run)
+Scored against README "What a correct practice run looks like": 6/6 statuses, 3/3 skips, 1/1 drafts
+Cost: 65,118 input × $2/M + 4,107 output × $10/M ≈ $0.17
+-------------------------------------------------------------------------------
+
+Running agent (practice inbox)...
+
+  step 1: search_emails(query='application OR applied OR interview OR assessment OR offer OR unfortunately OR c...)
+  step 1: search_emails(query='internship OR recruiter OR "thank you for applying" OR HireVue OR "next steps"',...)
+  step 1: list_stale_applications(days=14)
+  step 2: read_email(email_id='e04')
+  step 2: read_email(email_id='e05')
+  step 2: read_email(email_id='e02')
+  step 2: find_application(company='Harbor Capital')
+  step 2: find_application(company='Northbridge')
+  step 2: find_application(company='Skyline')
+  step 2: find_application(company='Atlas')
+  step 2: find_application(company='Prairie')
+  step 3: update_application(company='Skyline Airways', role='Sales Strategy & Pricing Intern', status='applied', ev...)
+  step 3: update_application(company='Northbridge Consulting', role='Data Analyst Intern', status='applied', event_d...)
+  step 3: update_application(company='Northbridge Consulting', role='Strategy Consulting Intern', status='applied', ...)
+  step 3: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 3: update_application(company='Atlas Retail', role='Pricing Analyst Intern', status='rejected', event_date='2...)
+  step 3: update_application(company='Prairie Air', role='Revenue Management Intern', status='applied', event_date='...)
+  step 3: skip_email(email_id='e08', reason='Job board alert/newsletter')
+  step 3: skip_email(email_id='e09', reason='Personal mail from family')
+  step 3: skip_email(email_id='e11', reason='University career fair announcement')
+  step 4: update_application(company='Harbor Capital', role='Business Analyst Intern', status='assessment', event_da...)
+  step 5: update_application(company='Harbor Capital', role='Business Analyst Intern', status='interview', event_dat...)
+  step 6: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', event_date=...)
+  step 6: list_stale_applications(days=14)
+
+  thinking: Only Northbridge (Data Analyst Intern) has a real contact.
+  step 7: create_draft(to='priya.shah@northbridge.example', subject='Following up: Data Analyst Intern applica...)
+
+[done in 8 steps | 65,118 input + 4,107 output tokens]
+
+=== Actions taken ===
+- Skyline Airways / Sales Strategy & Pricing Intern: created
+- Northbridge Consulting / Data Analyst Intern: created
+- Northbridge Consulting / Strategy Consulting Intern: created
+- Harbor Capital / Business Analyst Intern: created
+- Atlas Retail / Pricing Analyst Intern: created
+- Prairie Air / Revenue Management Intern: created
+- Harbor Capital / Business Analyst Intern: updated 'applied' -> 'assessment'
+- Harbor Capital / Business Analyst Intern: updated 'assessment' -> 'interview'
+- Harbor Capital / Business Analyst Intern: kept status 'interview' (won't move from 'interview' to 'applied')
+- Drafted follow-up: 'Following up: Data Analyst Intern application' -> priya.shah@northbridge.example
+
+=== Agent summary ===
+**Tracker updates (6 applications)**
+- **Harbor Capital, Business Analyst Intern:** now at **interview**. It went from applied to assessment to interview. The later "We received your application" email (Nov 12) was a duplicate, and the tracker kept the interview status.
+- **Atlas Retail, Pricing Analyst Intern:** **rejected** (Nov 4).
+- **Skyline Airways, Sales Strategy & Pricing Intern (Summer 2027):** applied.
+- **Northbridge Consulting, Data Analyst Intern:** applied.
+- **Northbridge Consulting, Strategy Consulting Intern:** applied. I logged it as a separate role from the Data Analyst one.
+- **Prairie Air, Revenue Management Intern:** applied.
+
+**Skipped (not your applications):** the JobBoard alert, the email from Mom, and the university career fair notice.
+
+**Draft created (not sent):** a follow-up to Priya Shah at Northbridge about the Data Analyst Intern role. It's in your drafts for you to review.
+
+**Needs your attention**
+- **Harbor Capital interview:** Maya Lopez (maya.lopez@harborcapital.example) asked on Nov 11 for three time slots next Tuesday to Thursday, which is Nov 17–19. Her email is the only recent one that asks you to reply, so please do that soon. I didn't see a reply from you in the inbox. I didn't draft it because I don't know your availability.
+- **Harbor Capital assessment:** the 5-day deadline was about Nov 12. Maya's email says you completed it, so this is probably fine.
+- **No follow-up possible:** Skyline Airways and Prairie Air both applied from no-reply addresses, so there's no contact to write to. They are 14 or more days old. Check their candidate portals or look for a recruiter contact.
+- **Northbridge Strategy Consulting:** it isn't stale yet. Its sender is a generic talent address, so you could include it in your note to Priya.
+
+=== Tracker (6 applications) ===
+Company                 Role                                Status      Applied     Last update
+Harbor Capital          Business Analyst Intern             interview   2026-10-29  2026-11-12
+Northbridge Consulting  Strategy Consulting Intern          applied     2026-11-09  2026-11-09
+Atlas Retail            Pricing Analyst Intern              rejected    2026-11-04  2026-11-04
+Prairie Air             Revenue Management Intern           applied     2026-10-31  2026-10-31
+Northbridge Consulting  Data Analyst Intern                 applied     2026-10-27  2026-10-27
+Skyline Airways         Sales Strategy & Pricing Intern     applied     2026-10-23  2026-10-23
