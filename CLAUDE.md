@@ -10,8 +10,12 @@ It never sends email.
   - `tools.py`: tool schemas the model sees + `run_tool()` that executes them (draft cap enforced here)
   - `tracker_db.py`: SQLite memory (applications, events, processed_emails); statuses never move backwards
   - `inbox.py`: `FakeInbox` (practice, `sample_data/fake_inbox.json`) and `GmailInbox` (real Gmail API)
-  - `prompts.py`: system prompt; `main.py`: CLI (`run --fake`, `run`, `show`, `reset`)
-  - `tests/test_tools.py`: 8 passing tests (`python -m unittest discover tests`)
+  - `prompts.py`: system prompt; `main.py`: CLI (`run --fake`, `run`, `show`, `reset`; `--no-cache` turns prompt caching off)
+  - `costs.py`: token → dollar math (incl. cache reads/writes); `run_log.py`: full JSON log of every run in `runs/` (gitignored)
+  - `mcp_server.py`: read-only MCP server over the tracker (for Claude desktop / Claude Code)
+  - `scripts/make_demo_svg.py`: builds `docs/demo.svg` (README animation) from a saved run in `results/`
+  - `tests/`: 18 passing tests, all free (`python -m unittest discover tests`)
+  - `results/`: saved run outputs + analysis (`results/README.md`); add new runs as rows there
 - The README's "What a correct practice run looks like" table is the expected outcome for the fake inbox.
 
 ## What I want next (in this order)

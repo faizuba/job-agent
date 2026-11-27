@@ -4,6 +4,15 @@ An AI agent that reads your inbox every morning, keeps a tracker of every job ap
 (applied → assessment → interview → offer / rejected), ignores the noise, and drafts polite
 follow-ups for applications that have gone quiet. It **never sends email**. Drafts wait for you.
 
+<p align="center"><img src="docs/demo.svg" width="100%" alt="Replay of a real practice run: the agent searches the inbox, reads emails, updates the tracker, tries to move one application backwards and is stopped by a code guardrail, then drafts one follow-up."></p>
+
+**Highlights**
+- Agent loop written by hand (no framework), with guardrails enforced in code, not just in the prompt
+- Evaluated against a labeled practice inbox: every run so far scored 100%, on both Sonnet 5.5 and Haiku 5.5 ([results](results/README.md))
+- Prompt caching cut the cost per run by about 40% (input-token cost by about 60%) with no change in accuracy ([experiment](results/README.md#prompt-caching-experiment-2026-11-26))
+- Every run saves a step-by-step JSON log of each model decision and tool call
+- A read-only MCP server lets the Claude desktop app answer questions like "what does my pipeline look like?"
+
 ## Why this is an agent and not a chatbot
 
 | A chatbot... | This agent... |
@@ -21,20 +30,20 @@ follow-ups for applications that have gone quiet. It **never sends email**. Draf
 Practice mode uses `sample_data/fake_inbox.json`, which has 12 made-up emails from fictional
 companies, including some traps. You don't need Google set up for this.
 
-**1. Install Python 3.10+ and the library**
-```bash
-cd job-agent
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
+**1. Get an Anthropic API key.** Sign in at console.anthropic.com, open API Keys, create a key, and add a
+few dollars of credit. A practice run costs well under a cent on Haiku and a few cents on Sonnet
+(the agent prints the exact cost at the end).
 
-**2. Get an Anthropic API key.** Sign in at console.anthropic.com, open API Keys, create a key, and add a
-few dollars of credit. A practice run uses a small number of tokens (the agent prints the
-exact count at the end).
+**2. Run the setup script** (Mac/Linux, needs Python 3.10+). It creates a virtual environment, installs
+the libraries, asks for your key (saved to `.env`, which git ignores), and runs the tests.
 ```bash
-export ANTHROPIC_API_KEY="sk-ant-..."     # Windows PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
+./setup.sh
+source .venv/bin/activate
 ```
+On Windows: `python -m venv .venv`, `.venv\Scripts\activate`, `pip install -r requirements.txt`, then
+create a file named `.env` containing `ANTHROPIC_API_KEY=sk-ant-...`.
+
+The model defaults to Sonnet 5.5. To use another one, add a line like `AGENT_MODEL=claude-haiku-5-5` to `.env`.
 
 **3. Check the tools work (no AI, free)**
 ```bash
@@ -46,10 +55,12 @@ python -m unittest discover tests
 python main.py run --fake
 ```
 Watch the log. Each `step N: tool_name(...)` line is the model choosing an action.
-Drafts appear in the `drafts/` folder. Run it again and notice it skips everything,
+Drafts appear in the `drafts/` folder. The last lines show the cost and where the full
+step-by-step log was saved (`runs/`). Run it again and notice it skips everything,
 because it remembers what it already processed.
 
 **5. Start over any time:** `python main.py reset --fake`
+
 ### Results: model comparison (Nov 16, 2026, sample inbox, 1 run each)
 
 | | Sonnet 5.5 | Haiku 5.5 |
@@ -66,6 +77,9 @@ because it remembers what it already processed.
 4% of the cost. Both models broke the same prompt rule ("statuses never move backwards"), and the
 check in `tracker_db.py` stopped both, which is why guardrails belong in code. One run each is a small
 sample; next step is repeated runs with an automated eval.
+
+All runs, logs and the prompt caching experiment are in [results/](results/README.md).
+
 ### What a correct practice run looks like
 Use this to check the agent's work. It's your first **evaluation set**.
 
@@ -84,16 +98,31 @@ interview times.
 
 ---
 
-## How it works: read the files in this order
+## How it works
 
+```mermaid
+flowchart LR
+    U["main.py<br/>run --fake / run"] --> L
+
+    subgraph L["agent.py: the agent loop (max 25 steps)"]
+        direction TB
+        M["Claude<br/>decides the next step"] -- "tool request" --> T["tools.py<br/>run_tool()"]
+        T -- "tool result" --> M
+    end
+
+    T --> I["inbox.py<br/>practice inbox or Gmail<br/>read + drafts only"]
+    T --> D[("tracker_db.py<br/>SQLite memory")]
+    G{{"Guardrails in code<br/>status never moves backwards<br/>max 3 drafts per run<br/>never sends email"}} -.-> T
+
+    L --> C["costs.py<br/>tokens to dollars"]
+    L --> R["runs/*.json<br/>step-by-step log"]
+    D --> S["mcp_server.py<br/>read-only"] --> CD["Claude desktop<br/>what does my pipeline look like?"]
 ```
-main.py ──► agent.py (the loop) ──► model decides next step
-                │                         │
-                │◄──── tool request ──────┘
-                ▼
-            tools.py ──► inbox.py (Fake or Gmail)
-                    └──► tracker_db.py (SQLite memory)
-```
+
+The model never touches your inbox or database directly. It can only *ask* for one of the
+tools in `tools.py`, and your code decides what actually happens. That's where the guardrails live.
+
+### Read the files in this order
 
 1. **`tracker_db.py`** is long-term memory. Three tables: applications, events (history),
    processed_emails (so nothing gets handled twice). Note the status rules enforced in code.
@@ -102,8 +131,11 @@ main.py ──► agent.py (the loop) ──► model decides next step
 3. **`tools.py`** defines what the agent can do. `TOOL_SCHEMAS` is what the model *sees*; `run_tool()`
    is what *actually runs*. Guardrails (like the 3-drafts-per-run cap) live here, in code.
 4. **`prompts.py`** has the instructions. When the agent makes a judgment mistake, start here.
-5. **`agent.py`** is **the loop.** About 40 lines. Read every comment. This is what "AI agent" means.
+5. **`agent.py`** is **the loop.** Read every comment. This is what "AI agent" means. It also turns on
+   prompt caching and writes the run log.
 6. **`main.py`** is the command line around everything.
+7. **`costs.py`** turns token counts into dollars, and **`run_log.py`** saves every step to `runs/*.json`.
+8. **`mcp_server.py`** shares the tracker, read-only, with AI assistants (see below).
 
 ### Key ideas to be able to explain in an interview
 - **Tool use:** the model never runs code. It *requests* a tool with arguments, and your program runs it
@@ -114,6 +146,39 @@ main.py ──► agent.py (the loop) ──► model decides next step
   Read-only Gmail scope + drafts-only means the worst case is a bad draft, never a bad sent email.
 - **Memory:** the model is stateless. The database is what lets it remember across runs.
 - **Evaluation:** "it seemed to work" isn't evidence. The expected-results table above is.
+- **Prompt caching:** an agent loop re-sends the whole conversation every step. Caching lets the API
+  reuse what it already processed, at about a tenth of the input price. Measured here: about 40% cheaper per run.
+- **Observability:** the JSON run logs show what the model saw and decided at every step, so mistakes
+  can be traced instead of guessed at.
+- **MCP:** a standard way to plug tools into any AI assistant. The same tracker serves this agent
+  (read and write, through guardrails) and Claude desktop (read-only).
+
+---
+
+## Ask Claude about your tracker (MCP server)
+
+`mcp_server.py` gives the Claude desktop app three **read-only** tools: list applications,
+a pipeline summary (counts per status, response rate, stale applications), and an
+application's full history. The database is opened in SQLite's read-only mode, so nothing
+can be changed through it.
+
+1. Install the Claude desktop app and open **Settings → Developer → Edit Config**. This opens
+   `claude_desktop_config.json`.
+2. Add this, using the full path to *your* project folder (keep any servers already there):
+```json
+{
+  "mcpServers": {
+    "job-tracker": {
+      "command": "/full/path/to/job-agent/.venv/bin/python",
+      "args": ["/full/path/to/job-agent/mcp_server.py", "--practice"]
+    }
+  }
+}
+```
+3. Restart the Claude desktop app and ask: *"Using the job-tracker tools, what does my pipeline look like?"*
+
+`--practice` serves the practice tracker. Remove it to serve your real one once Gmail is connected.
+To use it in Claude Code instead: `claude mcp add job-tracker -- /full/path/.venv/bin/python /full/path/mcp_server.py --practice`.
 
 ---
 
@@ -138,8 +203,9 @@ Tip: the first real run with `--days 60` backfills your history. After that, `--
 
 **Mac / Linux:** `crontab -e`, then add (fix the paths):
 ```
-0 7 * * * cd /path/to/job-agent && ANTHROPIC_API_KEY=sk-ant-... .venv/bin/python main.py run --days 2 >> agent.log 2>&1
+0 7 * * * cd /path/to/job-agent && .venv/bin/python main.py run --days 2 >> agent.log 2>&1
 ```
+The API key comes from `.env`, so it never has to appear in your crontab.
 **Windows:** Task Scheduler → Create Basic Task → Daily 7:00 → Start a program →
 `C:\path\to\job-agent\.venv\Scripts\python.exe` with arguments `main.py run --days 2` and
 "Start in" set to the job-agent folder. Set `ANTHROPIC_API_KEY` as a user environment variable.
