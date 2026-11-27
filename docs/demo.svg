@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="911" height="802" viewBox="0 0 911 802" role="img" aria-label="Replay of a real practice run of the job application tracker agent">
+<style>
+text { font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+@keyframes l0{0%,0.99%{opacity:0}1.39%,97%{opacity:1}100%{opacity:0}}.l0{animation:l0 20.1s linear infinite}
+@keyframes l1{0%,2.58%{opacity:0}2.98%,97%{opacity:1}100%{opacity:0}}.l1{animation:l1 20.1s linear infinite}
+@keyframes l2{0%,4.17%{opacity:0}4.57%,97%{opacity:1}100%{opacity:0}}.l2{animation:l2 20.1s linear infinite}
+@keyframes l3{0%,5.77%{opacity:0}6.17%,97%{opacity:1}100%{opacity:0}}.l3{animation:l3 20.1s linear infinite}
+@keyframes l4{0%,7.36%{opacity:0}7.76%,97%{opacity:1}100%{opacity:0}}.l4{animation:l4 20.1s linear infinite}
+@keyframes l5{0%,8.95%{opacity:0}9.35%,97%{opacity:1}100%{opacity:0}}.l5{animation:l5 20.1s linear infinite}
+@keyframes l6{0%,10.54%{opacity:0}10.94%,97%{opacity:1}100%{opacity:0}}.l6{animation:l6 20.1s linear infinite}
+@keyframes l7{0%,12.13%{opacity:0}12.53%,97%{opacity:1}100%{opacity:0}}.l7{animation:l7 20.1s linear infinite}
+@keyframes l8{0%,13.72%{opacity:0}14.12%,97%{opacity:1}100%{opacity:0}}.l8{animation:l8 20.1s linear infinite}
+@keyframes l9{0%,15.31%{opacity:0}15.71%,97%{opacity:1}100%{opacity:0}}.l9{animation:l9 20.1s linear infinite}
+@keyframes l10{0%,16.90%{opacity:0}17.30%,97%{opacity:1}100%{opacity:0}}.l10{animation:l10 20.1s linear infinite}
+@keyframes l11{0%,18.49%{opacity:0}18.89%,97%{opacity:1}100%{opacity:0}}.l11{animation:l11 20.1s linear infinite}
+@keyframes l12{0%,20.08%{opacity:0}20.48%,97%{opacity:1}100%{opacity:0}}.l12{animation:l12 20.1s linear infinite}
+@keyframes l13{0%,21.67%{opacity:0}22.07%,97%{opacity:1}100%{opacity:0}}.l13{animation:l13 20.1s linear infinite}
+@keyframes l14{0%,23.26%{opacity:0}23.66%,97%{opacity:1}100%{opacity:0}}.l14{animation:l14 20.1s linear infinite}
+@keyframes l15{0%,24.85%{opacity:0}25.25%,97%{opacity:1}100%{opacity:0}}.l15{animation:l15 20.1s linear infinite}
+@keyframes l16{0%,26.44%{opacity:0}26.84%,97%{opacity:1}100%{opacity:0}}.l16{animation:l16 20.1s linear infinite}
+@keyframes l17{0%,28.03%{opacity:0}28.43%,97%{opacity:1}100%{opacity:0}}.l17{animation:l17 20.1s linear infinite}
+@keyframes l18{0%,29.62%{opacity:0}30.02%,97%{opacity:1}100%{opacity:0}}.l18{animation:l18 20.1s linear infinite}
+@keyframes l19{0%,31.21%{opacity:0}31.61%,97%{opacity:1}100%{opacity:0}}.l19{animation:l19 20.1s linear infinite}
+@keyframes l20{0%,32.80%{opacity:0}33.20%,97%{opacity:1}100%{opacity:0}}.l20{animation:l20 20.1s linear infinite}
+@keyframes l21{0%,34.39%{opacity:0}34.79%,97%{opacity:1}100%{opacity:0}}.l21{animation:l21 20.1s linear infinite}
+@keyframes l22{0%,35.98%{opacity:0}36.38%,97%{opacity:1}100%{opacity:0}}.l22{animation:l22 20.1s linear infinite}
+@keyframes l23{0%,37.57%{opacity:0}37.97%,97%{opacity:1}100%{opacity:0}}.l23{animation:l23 20.1s linear infinite}
+@keyframes l24{0%,39.17%{opacity:0}39.57%,97%{opacity:1}100%{opacity:0}}.l24{animation:l24 20.1s linear infinite}
+@keyframes l25{0%,40.76%{opacity:0}41.16%,97%{opacity:1}100%{opacity:0}}.l25{animation:l25 20.1s linear infinite}
+@keyframes l26{0%,42.35%{opacity:0}42.75%,97%{opacity:1}100%{opacity:0}}.l26{animation:l26 20.1s linear infinite}
+@keyframes l27{0%,43.94%{opacity:0}44.34%,97%{opacity:1}100%{opacity:0}}.l27{animation:l27 20.1s linear infinite}
+@keyframes l28{0%,45.53%{opacity:0}45.93%,97%{opacity:1}100%{opacity:0}}.l28{animation:l28 20.1s linear infinite}
+@keyframes l29{0%,47.12%{opacity:0}47.52%,97%{opacity:1}100%{opacity:0}}.l29{animation:l29 20.1s linear infinite}
+@keyframes l30{0%,48.71%{opacity:0}49.11%,97%{opacity:1}100%{opacity:0}}.l30{animation:l30 20.1s linear infinite}
+@keyframes l31{0%,50.30%{opacity:0}50.70%,97%{opacity:1}100%{opacity:0}}.l31{animation:l31 20.1s linear infinite}
+@keyframes l32{0%,51.89%{opacity:0}52.29%,97%{opacity:1}100%{opacity:0}}.l32{animation:l32 20.1s linear infinite}
+@keyframes l33{0%,53.48%{opacity:0}53.88%,97%{opacity:1}100%{opacity:0}}.l33{animation:l33 20.1s linear infinite}
+@keyframes l34{0%,55.07%{opacity:0}55.47%,97%{opacity:1}100%{opacity:0}}.l34{animation:l34 20.1s linear infinite}
+@keyframes l35{0%,56.66%{opacity:0}57.06%,97%{opacity:1}100%{opacity:0}}.l35{animation:l35 20.1s linear infinite}
+@keyframes l36{0%,58.25%{opacity:0}58.65%,97%{opacity:1}100%{opacity:0}}.l36{animation:l36 20.1s linear infinite}
+@keyframes l37{0%,59.84%{opacity:0}60.24%,97%{opacity:1}100%{opacity:0}}.l37{animation:l37 20.1s linear infinite}
+@keyframes l38{0%,61.43%{opacity:0}61.83%,97%{opacity:1}100%{opacity:0}}.l38{animation:l38 20.1s linear infinite}
+@keyframes l39{0%,63.02%{opacity:0}63.42%,97%{opacity:1}100%{opacity:0}}.l39{animation:l39 20.1s linear infinite}
+@keyframes l40{0%,64.61%{opacity:0}65.01%,97%{opacity:1}100%{opacity:0}}.l40{animation:l40 20.1s linear infinite}
+@media (prefers-reduced-motion: reduce) { text { animation: none !important; } }
+</style>
+<rect width="911" height="802" rx="10" fill="#0d1117"/>
+<rect width="911" height="32" rx="10" fill="#161b22"/>
+<rect y="22" width="911" height="10" fill="#161b22"/>
+<circle cx="20" cy="16" r="6" fill="#ff5f56"/><circle cx="40" cy="16" r="6" fill="#ffbd2e"/><circle cx="60" cy="16" r="6" fill="#27c93f"/>
+<text x="455.5" y="21" text-anchor="middle" fill="#8b949e" style="font-size:12px">job-agent: replay of a real practice run (fictional inbox)</text>
+<text class="l0" x="24" y="62" fill="#7ee787" xml:space="preserve">$ python main.py run --fake</text>
+<text class="l1" x="24" y="80" fill="#8b949e" xml:space="preserve">Running agent on claude-haiku-5-5 (practice inbox, prompt caching on)...</text>
+<text class="l2" x="24" y="98" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l3" x="24" y="116" fill="#79c0ff" xml:space="preserve">  step 1: search_emails(query='application OR interview OR assessment OR offer OR unfortunately OR "thank y...</text>
+<text class="l4" x="24" y="134" fill="#8b949e" xml:space="preserve">          ... +1 more search_emails calls</text>
+<text class="l5" x="24" y="152" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l6" x="24" y="170" fill="#d2a8ff" xml:space="preserve">  model: Both searches returned the same 12 emails. I'll read the ones with key details before updating the...</text>
+<text class="l7" x="24" y="188" fill="#79c0ff" xml:space="preserve">  step 2: read_email(email_id='e05')</text>
+<text class="l8" x="24" y="206" fill="#8b949e" xml:space="preserve">          ... +2 more read_email calls</text>
+<text class="l9" x="24" y="224" fill="#79c0ff" xml:space="preserve">  step 3: find_application(company='Skyline Airways')</text>
+<text class="l10" x="24" y="242" fill="#8b949e" xml:space="preserve">          ... +4 more find_application calls</text>
+<text class="l11" x="24" y="260" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l12" x="24" y="278" fill="#d2a8ff" xml:space="preserve">  model: No existing rows for these companies, so I'll create them. Harbor Capital's emails are in order, s...</text>
+<text class="l13" x="24" y="296" fill="#79c0ff" xml:space="preserve">  step 4: update_application(company='Skyline Airways', role='Sales Strategy &amp; Pricing Intern (Summer 2027)...</text>
+<text class="l14" x="24" y="314" fill="#8b949e" xml:space="preserve">          ... +5 more update_application calls</text>
+<text class="l15" x="24" y="332" fill="#79c0ff" xml:space="preserve">  step 5: update_application(company='Harbor Capital', role='Business Analyst Intern', status='assessment',...</text>
+<text class="l16" x="24" y="350" fill="#79c0ff" xml:space="preserve">  step 6: update_application(company='Harbor Capital', role='Business Analyst Intern', status='interview', ...</text>
+<text class="l17" x="24" y="368" fill="#e3b341" xml:space="preserve">  step 6: update_application(company='Harbor Capital', role='Business Analyst Intern', status='applied', ...)</text>
+<text class="l18" x="24" y="386" fill="#79c0ff" xml:space="preserve">  step 6: skip_email(email_id='e08', reason='JobBoard job alert')</text>
+<text class="l19" x="24" y="404" fill="#8b949e" xml:space="preserve">          ... +2 more skip_email calls</text>
+<text class="l20" x="24" y="422" fill="#79c0ff" xml:space="preserve">  step 6: list_stale_applications(days=14)</text>
+<text class="l21" x="24" y="440" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l22" x="24" y="458" fill="#d2a8ff" xml:space="preserve">  model: Three applications are stale. Only Northbridge has a real person to reply to, so I'll draft a foll...</text>
+<text class="l23" x="24" y="476" fill="#79c0ff" xml:space="preserve">  step 7: create_draft(to='priya.shah@northbridge.example', subject='Following up: Data Analyst Intern appl...</text>
+<text class="l24" x="24" y="494" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l25" x="24" y="512" fill="#3fb950" xml:space="preserve">[done in 8 steps | 63,640 input + 4,887 output tokens | cache: 52,187 read, 11,435 written</text>
+<text class="l26" x="24" y="530" fill="#3fb950" xml:space="preserve">  | cost ≈ $0.0044 (without caching ≈ $0.0088, saved 50%)]</text>
+<text class="l27" x="24" y="548" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l28" x="24" y="566" fill="#f0f6fc" xml:space="preserve">=== Guardrail check ===</text>
+<text class="l29" x="24" y="584" fill="#e3b341" xml:space="preserve">- Harbor Capital / Business Analyst Intern: kept status 'interview'  &lt;- downgrade blocked in code</text>
+<text class="l30" x="24" y="602" fill="#c9d1d9" xml:space="preserve">- Drafted follow-up -&gt; priya.shah@northbridge.example  (draft only, never sent)</text>
+<text class="l31" x="24" y="620" fill="#c9d1d9" xml:space="preserve"></text>
+<text class="l32" x="24" y="638" fill="#f0f6fc" xml:space="preserve">=== Tracker (6 applications) ===</text>
+<text class="l33" x="24" y="656" fill="#8b949e" xml:space="preserve">Company                 Role                                Status      Applied     Last update </text>
+<text class="l34" x="24" y="674" fill="#c9d1d9" xml:space="preserve">Harbor Capital          Business Analyst Intern             interview   2026-11-08  2026-11-22  </text>
+<text class="l35" x="24" y="692" fill="#c9d1d9" xml:space="preserve">Northbridge Consulting  Strategy Consulting Intern          applied     2026-11-19  2026-11-19  </text>
+<text class="l36" x="24" y="710" fill="#c9d1d9" xml:space="preserve">Atlas Retail            Pricing Analyst Intern              rejected    2026-11-14  2026-11-14  </text>
+<text class="l37" x="24" y="728" fill="#c9d1d9" xml:space="preserve">Prairie Air             Revenue Management Intern           applied     2026-11-10  2026-11-10  </text>
+<text class="l38" x="24" y="746" fill="#c9d1d9" xml:space="preserve">Northbridge Consulting  Data Analyst Intern                 applied     2026-11-06  2026-11-06  </text>
+<text class="l39" x="24" y="764" fill="#c9d1d9" xml:space="preserve">Skyline Airways         Sales Strategy &amp; Pricing Intern (Su applied     2026-11-02  2026-11-02  </text>
+<text class="l40" x="24" y="782" fill="#8b949e" xml:space="preserve">Full step-by-step log saved to runs/20261126_220554_claude-haiku-5-5.json</text>
+</svg>
